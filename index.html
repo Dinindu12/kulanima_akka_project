@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kulanima Odara | Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f0f4f8;
+            --text-color: #333;
+            --primary-color: #0056D2;
+            --secondary-color: #00A8FF;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+            --border-color: #e1e8ed;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --primary-color: #38bdf8;
+            --secondary-color: #818cf8;
+            --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.9);
+            --border-color: #334155;
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 50px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            width: 100%;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            color: var(--primary-color);
+        }
+
+        .typewriter-container {
+            font-size: 22px;
+            font-weight: 500;
+            color: var(--secondary-color);
+            height: 35px;
+            margin-bottom: 20px;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: var(--secondary-color);
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-desc {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.8;
+            max-width: 500px;
+        }
+
+        .contact-info-hero {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .contact-info-hero span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            background: var(--card-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info-hero i {
+            color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .img-box {
+            width: 350px;
+            height: 350px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: morph 8s ease-in-out infinite;
+            position: relative;
+        }
+
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--card-bg);
+            border: 4px solid var(--primary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content h4 {
+            font-size: 15px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .timeline-content span {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 13px;
+            background: rgba(0, 86, 210, 0.1);
+            color: var(--primary-color);
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 86, 210, 0.15);
+        }
+
+        .skill-card i {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        /* Experience Cards */
+        .exp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .exp-card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .exp-card h4 {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .exp-card p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-text h1 { font-size: 36px; }
+            .contact-info-hero { justify-content: center; }
+            .img-box { width: 250px; height: 250px; }
+            
+            .timeline::after { left: 31px; }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item.right { left: 0; }
+            .timeline-item.left::after, .timeline-item.right::after { left: 21px; }
+            
+            .nav-links a { display: none; } /* Hide links on mobile for cleaner look, keep toggle */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">D.A.K.Odara</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Kulanima Odara</span></h1>
+                <div class="typewriter-container">
+                    <span id="typewriter"></span><span class="cursor"></span>
+                </div>
+                <p class="hero-desc">A highly motivated individual with a strong background in Biological Science and professional IT qualifications. Selected for BSc. in Medical Laboratory Science (MLS) at the University of Jaffna.</p>
+                
+                <div class="contact-info-hero">
+                    <span><i class="fas fa-map-marker-alt"></i> Aththanagalla</span>
+                    <span><i class="fas fa-phone"></i> 072 7324075</span>
+                    <span><i class="fas fa-envelope"></i> kulanima.odara@gmail.com</span>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="img-box">
+                    <!-- මෙතන ඔයාගේ ෆොටෝ එකේ නම දාන්න ඕනේ -->
+                    <img src="profile.jpg" alt="Kulanima Odara">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="reveal">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>BSc. in Medical Laboratory Science</h3>
+                    <h4>University of Jaffna</h4>
+                    <span>Selected</span>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>Diploma in ICT (UK Level 3)</h3>
+                    <h4>ESOFT Metro Campus</h4>
+                    <span>Completed</span>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <h3>G.C.E. Advanced Level</h3>
+                    <h4>Bandaranayake Central College, Veyangoda</h4>
+                    <p>Stream: Biological Science</p>
+                    <p>Results: Chemistry (B), Biology (C), Physics (C)</p>
+                    <span>Year: 2025</span>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <h3>G.C.E. Ordinary Level</h3>
+                    <h4>Ranpokunugama Maha Vidyalaya, Nittambuwa</h4>
+                    <p>Results: 9 Passes (8 'A's, 1 'B')</p>
+                    <span>Year: 2021</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="reveal">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fas fa-file-word"></i>
+                <h3>MS Office (Word, Excel, PPT)</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-keyboard"></i>
+                <h3>Data Entry & Typing</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Email & Internet</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-folder-open"></i>
+                <h3>Record Keeping</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-comments"></i>
+                <h3>Communication (Sinhala & English)</h3>
+            </div>
+            <div class="skill-card">
+                <i class="fas fa-clock"></i>
+                <h3>Time Management</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="reveal">
+        <h2 class="section-title">Leadership & Activities</h2>
+        <div class="exp-grid">
+            
+            <div class="exp-card">
+                <h3>School Senior Prefect</h3>
+                <h4>Bandaranayake Central College</h4>
+                <p>Assisted teachers with daily administrative tasks, maintained student records, and managed school event coordination.</p>
+            </div>
+
+            <div class="exp-card">
+                <h3>ICT Practical Assignments</h3>
+                <h4>ESOFT Metro Campus</h4>
+                <p>Completed practical coursework involving document formatting, data entry, and creating presentations using MS Office.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 D.A.K. Kulanima Odara. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // 1. Dark Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const icon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                icon.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        });
+
+        // 2. Typewriter Effect
+        const textArray = ["Aspiring Medical Laboratory Scientist", "ICT Diploma Holder", "Detail-Oriented Professional"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentText = textArray[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        document.addEventListener("DOMContentLoaded", () => setTimeout(type, 1000));
+
+        // 3. Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+    </script>
+
+</body>
+</html>
